@@ -7,4 +7,19 @@ module.exports = ({ env }) => ({
   webhooks: {
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
   },
+  vercel: {
+    // Required
+    token: env("VERCEL_TOKEN"),
+    // Required
+    projectId: env("VERCEL_PROJECT_ID"),
+    // Required (hooks)
+    triggers: {
+      production: env("VERCEL_TRIGGER_PRODUCTION"),
+    },
+    // Optional
+    config: {
+      // Number of latest deployments
+      deployments: 10,
+    },
+  },
 });
